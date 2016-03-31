@@ -10,7 +10,7 @@ enum Color {RED, BLACK};
 template <class T>
 struct Node
 {
-    int data;
+    T data;
     Color color;
     Node* left;
     Node* right;
@@ -58,7 +58,10 @@ public:
     Color getColor();
     void setColor(Color c);
     void flipColor();
-    T getData();
+    T getData()
+	{
+	    return _root->data;
+	};
     T setData();
 };
 
