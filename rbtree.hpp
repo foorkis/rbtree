@@ -1,7 +1,5 @@
 #ifndef rbtree
 #define rbtree
-// implementation in .hpp,
-// cause there's template classes
 #include <iostream>
 
 using std::cin;
@@ -31,10 +29,30 @@ class RBtree
 private:
     Node<T>* _root;
 public:
-    RBtree();
-    RBtree(T value);
-    ~RBtree();
-    void insert(T value);
+    RBtree()
+	{
+	    _root=nullptr;
+	};
+    RBtree(T value)
+	{
+	    _root = new Node<T>(value);
+	};
+    ~RBtree()
+	{
+	    if (_root->right!=nullptr)
+		delete _root->right;
+	    if (_root->left!=nullptr)
+		delete _root->left;
+	    cout << "\nwoosh!\n";
+	};
+    void printRoot()
+	{
+	    cout << _root->data;
+	};
+    void insert(T value)
+	{
+	    
+	};
     void search(T value);
     void print();
     Color getColor();
@@ -43,27 +61,5 @@ public:
     T getData();
     T setData();
 };
-
-RBtree()
-{
-    _root=nullptr;
-}
-
-RBtree(T value)
-{
-    _root = new Node(value);
-}
-
-~RBtree()
-{
-    if (right!=nullptr)
-	delete right;
-    if (left!=nullptr)
-	delete left;
-}
-
-void RBtree::insert(T value)
-{
-}
 
 #endif //#ifndef rbtree

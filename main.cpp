@@ -1,13 +1,10 @@
+#include "rbtree.hpp"
 #include <iostream>
 using std::cout;
 
-enum Color {RED, BLACK};
-
 int main()
 {
-    Color c1 = RED;
-    Color c2 = BLACK;
-    cout << c1 << " " << c2 << '\n';
-    cout << (c1==RED) << " " << (c2==RED)<< '\n';
+    RBtree<float> r = 123.4; // почему-то приводит к инту
+    r.printRoot();
+    return 0;
 }
-	
