@@ -39,11 +39,11 @@ class RBtree
 {
 private:
     Node<T>* _root;
-    const Node<T>*  const nil;  // must be const pointer for const object
+    Node<T>* nil; 
 public:
     RBtree()
 	{
-	    nil=new Node<T>();  // replace with ??? 
+	    nil=new Node<T>();   
 	    _root=nil;
 	};
     RBtree(T value)
@@ -59,6 +59,14 @@ public:
 		delete _root->left;
 	    if ((_root->parent==nil) and (_root!=nil))
 		delete nil;
+	};
+    T getData()
+	{
+	    return _root->data;
+	};
+    void setData(T value)
+	{
+	    _root->data=value;
 	};
     Color getColor()
 	{
@@ -83,11 +91,6 @@ public:
 
 	};
     void print();
-    T getData()
-	{
-	    return _root->data;
-	};
-    T setData();
 };
 
 #endif //#ifndef rbtree
