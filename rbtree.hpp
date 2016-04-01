@@ -39,11 +39,11 @@ class RBtree
 {
 private:
     Node<T>* _root;
-    const Node<T>* const nil;  // const pointer for const object
+    const Node<T>*  const nil;  // must be const pointer for const object
 public:
     RBtree()
 	{
-	    nil=new Node<T>();
+	    nil=new Node<T>();  // replace with ??? 
 	    _root=nil;
 	};
     RBtree(T value)
