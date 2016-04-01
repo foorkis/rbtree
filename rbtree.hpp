@@ -39,17 +39,16 @@ class RBtree
 {
 private:
     Node<T>* _root;
-    const Node<T>*  const nil;  // must be const pointer for const object
+    static const Node<T>* const nil; 
 public:
     RBtree()
 	{
-	    nil=new Node<T>();  // replace with ??? 
 	    _root=nil;
 	};
     RBtree(T value)
 	{
-	    nil=new Node<T>();
 	    _root=new Node<T>(value, BLACK, nil);
+	    _root->parent=nil;
 	};
     ~RBtree()
 	{
@@ -89,5 +88,10 @@ public:
 	};
     T setData();
 };
+
+//wooooooo, C++ magic
+template <typename T>
+const Node<T>* const RBtree<T>::nil = new Node<T>();
+
 
 #endif //#ifndef rbtree
