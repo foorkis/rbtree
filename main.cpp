@@ -4,7 +4,8 @@ using std::cout;
 
 int main()
 {
-    RBtree<float> r = 123.4; // почему-то приводит к инту
-    r.printRoot();
+    Node <int> a(5);
+    RBtree<float> r = 123.4;
+    RBtree<int>* x = nullptr;
     return 0;
 }

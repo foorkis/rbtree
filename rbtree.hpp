@@ -5,22 +5,31 @@
 using std::cin;
 using std::cout;
 
-enum Color {RED, BLACK};
-
 template <class T>
 struct Node
 {
     T data;
-    Color color;
+    char color;
     Node* left;
     Node* right;
     Node* parent;
-    Node (T value)
-	: data(value)
-	, color(BLACK)
-	, left(nullptr)
-	, right(nullptr)
-	, parent(nullptr){};    
+    Node ()
+    	: color('b')
+    	, left(nullptr)
+    	, right(nullptr)
+    	, parent(nullptr){};
+    Node (T value, char c)
+    	: data(value)
+    	, color(c)
+    	, left(nullptr)
+    	, right(nullptr)
+    	, parent(nullptr){};
+    Node (T value, char c, Node* p)
+    	: data(value)
+    	, color(c)
+    	, left(nullptr)
+    	, right(nullptr)
+    	, parent(p){};
 };
 
 template <class T>
@@ -28,14 +37,16 @@ class RBtree
 {
 private:
     Node<T>* _root;
+    Node<T>* nil;
 public:
     RBtree()
 	{
-	    _root=nullptr;
+	    nil=new Node<T>();
+	    _root=nil;
 	};
     RBtree(T value)
 	{
-	    _root = new Node<T>(value);
+	    
 	};
     ~RBtree()
 	{
@@ -43,21 +54,20 @@ public:
 		delete _root->right;
 	    if (_root->left!=nullptr)
 		delete _root->left;
-	    cout << "\nwoosh!\n";
 	};
-    void printRoot()
-	{
-	    cout << _root->data;
-	};
+    
+    bool getColor();
+    void setColor(Color c);
+    void flipColor();
     void insert(T value)
 	{
 	    
 	};
-    void search(T value);
+    void search(T value)
+	{
+
+	};
     void print();
-    Color getColor();
-    void setColor(Color c);
-    void flipColor();
     T getData()
 	{
 	    return _root->data;
