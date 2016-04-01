@@ -31,14 +31,7 @@ struct Node
     	, color(c)
     	, left(nullptr)
     	, right(nullptr)
-    	, parent(p){};
-    void printNode()
-	{
-	    if (RED==color)
-		cout << "(RED|" << data << ")";
-	    else
-		cout << "(BLACK|" << data << ")";
-	}
+    	, parent(p){};	    
 };
 
 template <class T>
@@ -46,26 +39,26 @@ class RBtree
 {
 private:
     Node<T>* _root;
-    Node<T>* nil;
+    const Node<T>* const nil;  // const pointer for const object
 public:
     RBtree()
 	{
 	    nil=new Node<T>();
-	    nil->left=nil;
-	    nil->right=nil;
-	    nil->parent=nil;
 	    _root=nil;
 	};
     RBtree(T value)
 	{
-	    
+	    nil=new Node<T>();
+	    _root=new Node<T>(value, BLACK, nil);
 	};
     ~RBtree()
 	{
-	    if (_root->right!=nullptr)
+	    if (_root->right != nil)
 		delete _root->right;
-	    if (_root->left!=nullptr)
+	    if (_root->left != nil)
 		delete _root->left;
+	    if ((_root->parent==nil) and (_root!=nil))
+		delete nil;
 	};
     Color getColor()
 	{
