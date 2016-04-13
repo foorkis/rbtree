@@ -1,5 +1,5 @@
-#ifndef rbtree
-#define rbtree
+#ifndef RBTREE
+#define RBTREE
 #include <iostream>
 
 using std::cin;
@@ -7,39 +7,15 @@ using std::cout;
 
 enum Color {RED, BLACK};
 
-template <class T>
-struct Node
-{
-    T data;
-    Color color;
-    Node* left;
-    Node* right;
-    Node* parent;
-    Node ()              // for NIL node
-    	: color(BLACK)
-    	, left(this)
-    	, right(this)
-    	, parent(this){};
-    Node (T value, Color c)
-    	: data(value)
-    	, color(c)
-    	, left(nullptr)
-    	, right(nullptr)
-    	, parent(nullptr){};
-    Node (T value, Color c, Node* p)
-    	: data(value)
-    	, color(c)
-    	, left(nullptr)
-    	, right(nullptr)
-    	, parent(p){};	    
-};
-
-template <class T>
 class RBtree
 {
 private:
-    Node<T>* _root;
-    Node<T>* nil; 
+    int data;
+    Color color;
+    RBtree* left;
+    RBtree* right;
+    RBtree* parent;
+    static Rbtree* NILl;
 public:
     RBtree()
 	{
@@ -93,4 +69,4 @@ public:
     void print();
 };
 
-#endif //#ifndef rbtree
+#endif //#ifndef RBTREE
