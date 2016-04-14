@@ -29,18 +29,28 @@ RBtree::~RBtree()
     cout << "pshchoooo\n";
 }
 
-// no check for root node
-//------------------------------
+bool RBtree::isRoot()
+{
+    return (nullptr==parent);
+}
+
 bool RBtree::isLeftChild()
 {
+    if (this->isRoot()){
+        cout << "\nerror: node is root (from isLeftChild)";
+        return false;
+    }
     return (this==parent->left);
 }
 
 bool RBtree::isRightChild()
 {
+    if (this->isRoot()){
+        cout << "\nerror: node is root (from isRightChild)";
+        return false;
+    }
     return (this==parent->right);
 }
-//------------------------------
 
 RBtree* RBtree::grandpa()
 {
@@ -76,15 +86,14 @@ void RBtree::search(int key)
 {
 }
 
-void RBtree::print()
+void RBtree::printNode()
 {
-    //FIXME
-    cout << key << " (";
+    cout << '[' << key << " (";
     if (RED==color)
 	cout << "red";
     if (BLACK==color)
 	cout << "black";
-    cout << ")\n";
+    cout << ")]";
 }
 
 void RBtree::test()
@@ -96,10 +105,17 @@ void RBtree::test()
     c->parent = a;
     a->right = b;
     b->parent = a;
+    a->printNode();
+    b->printNode();
+    c->printNode();
+    cout << "\nb's parent: " << b->parent;
+    cout << "\nc's parent: " << c->parent;
     cout << "\nb is right child: " << b->isRightChild();
     cout << "\nb is left child: " << b->isLeftChild(); // segfault?
+    cout << "\nc is right child: " << c->isRightChild();
+    cout << "\nc is left child: " << c->isLeftChild();
+    cout << "\na is left child: " << a->isLeftChild();
     cout << "\na is right child: " << a->isRightChild();
-    cout << "\nb is left child: " << a->isLeftChild();
 }
 
 #endif //#ifdef RBTREE_CPP

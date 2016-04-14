@@ -15,6 +15,7 @@ public:
 //    RBtree();
     RBtree(int key);
     ~RBtree();
+    bool isRoot();
     bool isLeftChild();
     bool isRightChild();
     RBtree* grandpa();
@@ -22,7 +23,7 @@ public:
     void flipColor();
     void insert(int key);
     void search(int key);
-    void print();
+    void printNode();
     void test();
 };
 
