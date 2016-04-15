@@ -21,6 +21,8 @@ public:
     RBtree* grandpa();
     RBtree* uncle();
     void flipColor();
+    void rotateRight();
+    void rotateLeft();
     void insert(int key);
     void search(int key);
     void printNode();
